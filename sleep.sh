@@ -1,5 +1,5 @@
 while true
 do
-    echo "current time : $now"
+    echo "slept for 1 day, current time : " `date`
     sleep 1d
 done
