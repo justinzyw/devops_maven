@@ -1,3 +1,3 @@
 FROM maven:latest
 
-CMD /bin/sh
+CMD ["/bin/sh"]
