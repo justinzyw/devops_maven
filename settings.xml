@@ -1,0 +1,50 @@
+<settings>
+  <servers>
+    <server>
+      <id>devops-nexus</id>   
+      <username>admin</username>
+      <password>zaq12wsx</password>   
+      <configuration>
+        <email>admin@ibm.com</email> <!-- This is required when pushing docker image to Nexus -->
+      </configuration>
+    </server>
+  </servers>
+  <mirrors>
+    <mirror>
+      <id>devops-nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://devops-nexus:8081/repository/maven-public/</url>
+    </mirror>
+  </mirrors>
+  <pluginGroups>
+    <pluginGroup>org.mortbay.jetty</pluginGroup>
+    <pluginGroup>com.spotify</pluginGroup>
+  </pluginGroups>
+  <profiles>
+    <profile>
+      <id>devops-nexus</id>
+      <!--Enable snapshots for the built in central repo to direct -->
+      <!--all requests to nexus via the mirror -->
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <!--make the profile active all the time -->
+    <activeProfile>devops-nexus</activeProfile>
+  </activeProfiles>
+</settings>

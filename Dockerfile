@@ -1,4 +1,4 @@
-FROM maven:latest
+FROM maven:3.5.0-alpine
 
 COPY sleep.sh .
 
